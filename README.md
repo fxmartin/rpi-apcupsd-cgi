@@ -2,12 +2,14 @@
 Docker image to access apcupsd cgi
 
 just launch with the command
-``sudo docker run \
+```
+sudo docker run \
   --privileged \
   --volume /dev/bus/usb:/dev/bus/usb \
   --publish=8081:80 \
   --detach=true \
   --name=apcupsd-cgi \
   --hostname=apcupsd-cgi \
-  fxmartin/rpi-httpd-apcupsd```
+  fxmartin/rpi-httpd-apcupsd
+```
  
