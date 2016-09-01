@@ -26,7 +26,7 @@ UPSNAME MAINUPS
 #     940-1524C, 940-0024G, 940-0095A, 940-0095B,
 #     940-0095C, 940-0625A, M-04-02-2000
 #
-UPSCABLE usb
+UPSCABLE ether
 
 # To get apcupsd to work, in addition to defining the cable
 # above, you must also define a UPSTYPE, which corresponds to
@@ -79,8 +79,8 @@ UPSCABLE usb
 # modbus    /dev/tty**       Serial device for use with newest SmartUPS models
 #                            supporting the MODBUS protocol.
 #
-UPSTYPE usb
-DEVICE
+UPSTYPE net
+DEVICE 192.168.50.1:3551
 
 # POLLTIME <int>
 #   Interval (in seconds) at which apcupsd polls the UPS for status. This
