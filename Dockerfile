@@ -8,11 +8,6 @@ RUN apt-get update && apt-get install -y apache2 \
 	apcupsd-cgi && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set-up apcupsd defaults
-COPY ./config/apcupsd /etc/default/
-#RUN rm /etc/apcupsd/apcupsd.conf
-COPY ./config/apcupsd.conf /etc/apcupsd/apcupsd.conf
-
 # Define ServerName for Apache
 RUN echo 'ServerName apcupsd' >> /etc/apache2/apache2.conf
 
@@ -35,5 +30,9 @@ RUN a2enmod cgi
 # Expose ports
 EXPOSE 80 443
 
+# Copy the config items
+COPY ./config/init.sh /init.sh
+COPY ./config/index.html /var/www/html/index.html
+
 # Define default command
-#CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/init.sh"]
